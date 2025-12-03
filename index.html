@@ -16,6 +16,7 @@
       <nav class="nav">
         <a href="#how">How it works</a>
         <a href="#tools">Tools</a>
+        <a href="youtube-tools.html">YT Tools</a>
         <a href="#legal">Legal use</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -27,7 +28,7 @@
         <h1>Y2Mete – Pro Video Tools for Creators</h1>
         <p class="subtitle">
           Open and preview your own <strong>MP4 / WEBM</strong> videos from your device
-          or a direct file link. This page is for <strong>your content only</strong> –
+          or a direct file link. This page is for <strong>your content only</strong> – 
           it does not download from YouTube, Facebook, TikTok or any streaming sites.
         </p>
 
@@ -42,24 +43,15 @@
 
         <!-- FROM DEVICE -->
         <div class="input-row" style="margin-bottom: 10px;">
-          <input
-            type="text"
-            value="Open video from this device"
-            disabled
-            style="max-width: 260px; opacity: .8; cursor: default;"
-          />
+          <input type="text" value="Open video from this device" disabled style="max-width: 260px; opacity: .8; cursor: default;" />
           <input id="file-input" type="file" accept="video/mp4,video/webm" />
         </div>
 
         <!-- FROM URL -->
         <label class="field-label" for="video-url">2. Or paste a direct video file link (.mp4 / .webm)</label>
         <div class="input-row">
-          <input
-            id="video-url"
-            type="url"
-            placeholder="https://example.com/video.mp4"
-            autocomplete="off"
-          />
+          <input id="video-url" type="url" placeholder="https://example.com/video.mp4"
+            autocomplete="off" />
           <button id="paste-btn" type="button">Paste</button>
         </div>
         <p class="hint">
@@ -84,8 +76,7 @@
           <video id="preview" controls playsinline></video>
           <a id="download-link" class="download-btn" download>Save a copy</a>
           <p class="hint">
-            Tip: use this preview while editing, planning clips, or checking aspect ratio
-            before uploading to YouTube, Reels or Shorts.
+            Tip: preview before uploading to YouTube, Shorts, TikTok, or Instagram Reels.
           </p>
         </div>
       </section>
@@ -95,50 +86,37 @@
         <section class="info-card" id="how">
           <h2>How Y2Mete works</h2>
           <ol>
-            <li>Select a video from your device or paste a direct .mp4 / .webm link.</li>
-            <li>Click <strong>Open video</strong> to load it into the player.</li>
-            <li>Preview the clip and, if you want, click <strong>Save a copy</strong>.</li>
+            <li>Select a file or paste a direct .mp4 / .webm link.</li>
+            <li>Click <strong>Open video</strong>.</li>
+            <li>Preview and save if needed.</li>
           </ol>
           <p class="small">
-            Everything runs inside your browser. We don't store or upload your files.
+            Everything runs inside your browser. No uploads. No tracking.
           </p>
         </section>
 
         <section class="info-card" id="tools">
           <h2>Creator tools (roadmap)</h2>
-          <p class="small">
-            Upcoming browser-based tools for your own videos:
-          </p>
+          <p class="small">Upcoming:</p>
           <ul class="small" style="margin-top: 4px; padding-left: 18px;">
-            <li>Quick trim &amp; cut (client side)</li>
-            <li>Mute / replace audio track</li>
-            <li>Convert to vertical (9:16) preview</li>
-            <li>Thumbnail snapshot from any frame</li>
+            <li>Trim & cut</li>
+            <li>Remove / replace audio</li>
+            <li>Auto thumbnails</li>
+            <li>Vertical 9:16 preview</li>
           </ul>
-          <p class="small" style="margin-top: 6px;">
-            For now this page focuses on fast preview &amp; save – perfect as a “pre-upload
-            check” for creators.
-          </p>
         </section>
 
         <section class="info-card ad-card">
           <h2>Your ad space</h2>
-          <p class="small">
-            Add your Adsterra / PropellerAds / VPN affiliate banner code here to start
-            monetizing creator traffic.
-          </p>
-          <div id="ad-slot-1" class="ad-slot">
-            ADS HERE
-          </div>
+          <p class="small">Add your Adsterra / PropellerAds script here.</p>
+          <div id="ad-slot-1" class="ad-slot">ADS HERE</div>
         </section>
 
         <section class="info-card" id="legal">
           <h2>Legal use only</h2>
           <p class="small">
-            Y2Mete is a demo toolbox for personal and educational use. Use it only with
-            videos you created yourself or have permission to process. It is
-            <strong>not</strong> designed to bypass protections or download from streaming
-            platforms like YouTube, Facebook or TikTok.
+            Use only with content you created or have permission to process. 
+            This site does <strong>not</strong> download content from YouTube, Facebook, TikTok or streaming services.
           </p>
         </section>
       </aside>
