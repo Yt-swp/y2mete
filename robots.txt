@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yt-swp.github.io/y2mete/sitemap.xml
