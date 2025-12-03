@@ -66,13 +66,23 @@
         <p class="field-label">1. Choose your video source</p>
         
         <div class="input-row" style="margin-bottom: 10px;">
-          <input type="text" value="Open video from device" disabled style="max-width: 260px;opacity: .8;" />
+          <input
+            type="text"
+            value="Open video from device"
+            disabled
+            style="max-width: 260px;opacity: .8;"
+          />
           <input id="file-input" type="file" accept="video/mp4,video/webm" />
         </div>
 
         <label class="field-label" for="video-url">2. Paste a direct video URL (.mp4 / .webm)</label>
         <div class="input-row">
-          <input id="video-url" type="url" placeholder="https://example.com/video.mp4" autocomplete="off" />
+          <input
+            id="video-url"
+            type="url"
+            placeholder="https://example.com/video.mp4"
+            autocomplete="off"
+          />
           <button id="paste-btn">Paste</button>
         </div>
 
@@ -93,7 +103,7 @@
           <h2>Preview</h2>
           <video id="preview" controls playsinline></video>
           <a id="download-link" class="download-btn" download>Save a copy</a>
-          <p class="hint">Great for testing format, aspect ratio & quality.</p>
+          <p class="hint">Great for testing format, aspect ratio &amp; quality.</p>
         </div>
       </section>
 
@@ -103,11 +113,11 @@
           <ol>
             <li>Select file or paste URL</li>
             <li>Click <strong>Open video</strong></li>
-            <li>Preview & optionally save</li>
+            <li>Preview &amp; optionally save</li>
           </ol>
         </section>
 
-        <section class="info-card">
+        <section class="info-card" id="tools">
           <h2>Future tools</h2>
           <ul>
             <li>Trim tool</li>
@@ -137,15 +147,21 @@
 
   <script src="script.js"></script>
 
-  <!-- Schema -->
+  <!-- Schema.org structured data (Google Rich Results) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Y2Mete",
     "url": "https://yt-swp.github.io/y2mete/",
-    "description": "Legal video preview and YouTube helper tools.",
-    "applicationCategory": "Video Editing Tool"
+    "description": "A free, legal video toolbox for creators: preview MP4/WebM files from device or direct URLs, plus helper tools for YouTube content planning without downloading from protected platforms.",
+    "applicationCategory": "Multimedia",
+    "operatingSystem": "All",
+    "inLanguage": "en",
+    "creator": {
+      "@type": "Person",
+      "name": "SWP"
+    }
   }
   </script>
 
