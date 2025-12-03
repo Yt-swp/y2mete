@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>YouTube Creator Tools – Y2Mete</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+<div class="page">
+
+<header class="top-bar">
+  <div class="logo">Y2<span>Mete</span></div>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="#yt-title">Title Tools</a>
+    <a href="#thumb">Thumbnail</a>
+    <a href="#tags">Tags</a>
+  </nav>
+</header>
+
+<main class="main">
+<section class="tool-card">
+<h1>YouTube Creator Tools</h1>
+<p class="subtitle">Paste a YouTube URL to extract useful creator information (No downloading).</p>
+
+<label class="field-label">YouTube Video Link</label>
+<div class="input-row">
+  <input id="yt-url" type="url" placeholder="https://www.youtube.com/watch?v=xxxx" />
+  <button id="yt-paste">Paste</button>
+</div>
+
+<button id="process-url" class="download-btn" style="margin-top:10px;">Analyze Video</button>
+
+<p id="yt-status" class="status"></p>
+
+<div id="yt-result" class="result hidden">
+  <h2>Video Thumbnail</h2>
+  <img id="yt-thumb" style="width:100%;border-radius:12px;" />
+  <a id="thumb-download" class="download-btn" target="_blank">Open Full Thumbnail</a>
+
+  <h2 style="margin-top:20px;">Copy Title</h2>
+  <textarea id="yt-title" style="width:100%;height:60px;border-radius:10px;"></textarea>
+
+  <h2 style="margin-top:20px;">Generated Hashtags</h2>
+  <textarea id="yt-tags" style="width:100%;height:70px;border-radius:10px;"></textarea>
+
+  <button id="copy-title" class="download-btn" style="margin-top:10px;">Copy Title</button>
+  <button id="copy-tags" class="download-btn" style="margin-top:10px;background:#a855f7;">Copy Tags</button>
+</div>
+</section>
+
+<aside class="sidebar">
+<section class="info-card">
+<h2>How it works</h2>
+<p class="small">
+This tool extracts publicly visible metadata from YouTube links:
+<ul class="small" style="padding-left:20px;">
+<li>Thumbnail URL</li>
+<li>Suggested hashtags</li>
+<li>Short YouTube title format</li>
+</ul>
+No downloading. 100% creator-friendly.
+</p>
+</section>
+
+<section class="info-card ad-card">
+<h2>Your ad space</h2>
+<div class="ad-slot">ADS HERE</div>
+</section>
+</aside>
+
+</main>
+
+<footer class="footer">
+<p>© 2025 Y2Mete • Creator Tools Edition</p>
+</footer>
+
+<script src="yt-tools.js"></script>
+</div>
+</body>
+</html>
