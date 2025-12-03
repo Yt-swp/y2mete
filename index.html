@@ -2,649 +2,114 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Y2Mete - Simple Online Video Downloader</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Y2Mete - Free online video downloader for direct video links. Paste a video URL and download in one click." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Y2Mete – Smart Video Tools</title>
 
-  <style>
-    :root {
-      --bg: #050816;
-      --card: #0b1020;
-      --accent: #4f46e5;
-      --accent-soft: rgba(79, 70, 229, 0.15);
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --danger: #f97373;
-      --radius-lg: 18px;
-      --radius-md: 10px;
-      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.7);
-    }
+  <meta name="description" content="Y2Mete is a simple, legal video tool for previewing and downloading your own MP4/WebM video files from direct links. No YouTube / Facebook / TikTok support." />
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-    }
-
-    body {
-      min-height: 100vh;
-      background: radial-gradient(circle at top, #1e293b 0, #020617 45%, #020617 100%);
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-    }
-
-    .app {
-      width: 100%;
-      max-width: 960px;
-      background: linear-gradient(135deg, rgba(148, 163, 184, 0.08), transparent),
-        radial-gradient(circle at top left, rgba(56, 189, 248, 0.2), transparent 55%),
-        radial-gradient(circle at top right, rgba(129, 140, 248, 0.15), transparent 55%),
-        var(--card);
-      border-radius: 28px;
-      padding: 26px 22px 22px;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      backdrop-filter: blur(14px);
-    }
-
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle at 30% 20%, #a855f7, #4f46e5);
-      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.7);
-      font-weight: 900;
-      font-size: 20px;
-      letter-spacing: -1px;
-    }
-
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .logo-text h1 {
-      font-size: 22px;
-      letter-spacing: -0.04em;
-    }
-
-    .logo-text span {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .badge {
-      padding: 6px 11px;
-      border-radius: 999px;
-      background: rgba(22, 163, 74, 0.08);
-      border: 1px solid rgba(22, 163, 74, 0.4);
-      font-size: 11px;
-      color: #bbf7d0;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      white-space: nowrap;
-    }
-
-    .badge-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.45);
-    }
-
-    main {
-      display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-      gap: 18px;
-    }
-
-    @media (max-width: 768px) {
-      main {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .card {
-      background: rgba(15, 23, 42, 0.9);
-      border-radius: var(--radius-lg);
-      padding: 16px 16px 14px;
-      border: 1px solid rgba(148, 163, 184, 0.25);
-    }
-
-    .card-title {
-      font-size: 16px;
-      margin-bottom: 4px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .card-subtitle {
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 12px;
-    }
-
-    .pill {
-      font-size: 11px;
-      padding: 5px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      background: rgba(15, 23, 42, 0.9);
-      color: var(--muted);
-    }
-
-    .pill.primary {
-      border-color: rgba(79, 70, 229, 0.65);
-      background: var(--accent-soft);
-      color: #c7d2fe;
-    }
-
-    label {
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 6px;
-      display: block;
-    }
-
-    .input-row {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .url-input-wrapper {
-      position: relative;
-    }
-
-    .url-input {
-      width: 100%;
-      padding: 12px 90px 12px 12px;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      background: rgba(15, 23, 42, 0.85);
-      color: var(--text);
-      font-size: 13px;
-      outline: none;
-    }
-
-    .url-input::placeholder {
-      color: #6b7280;
-    }
-
-    .url-input:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.7);
-    }
-
-    .paste-btn {
-      position: absolute;
-      right: 6px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 11px;
-      padding: 5px 9px;
-      border-radius: 999px;
-      border: 1px dashed rgba(129, 140, 248, 0.7);
-      background: rgba(15, 23, 42, 0.9);
-      color: #c7d2fe;
-      cursor: pointer;
-    }
-
-    .row-2 {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    select {
-      flex: 1 1 150px;
-      padding: 10px 10px;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      background: rgba(15, 23, 42, 0.9);
-      color: var(--text);
-      font-size: 13px;
-      outline: none;
-    }
-
-    select:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.7);
-    }
-
-    .download-btn {
-      flex: 1 1 160px;
-      padding: 11px 12px;
-      border-radius: var(--radius-md);
-      border: none;
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      cursor: pointer;
-      background: linear-gradient(135deg, #6366f1, #ec4899);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      box-shadow: 0 14px 35px rgba(79, 70, 229, 0.8);
-    }
-
-    .download-btn span.icon {
-      font-size: 16px;
-      transform: translateY(1px);
-    }
-
-    .download-btn:disabled {
-      opacity: 0.5;
-      cursor: wait;
-      box-shadow: none;
-    }
-
-    .hint {
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 4px;
-      line-height: 1.4;
-    }
-
-    .hint b {
-      color: #e5e7eb;
-      font-weight: 600;
-    }
-
-    .status {
-      font-size: 12px;
-      margin-top: 8px;
-      min-height: 18px;
-    }
-
-    .status.ok {
-      color: #bbf7d0;
-    }
-
-    .status.error {
-      color: var(--danger);
-    }
-
-    .results {
-      margin-top: 10px;
-      display: none;
-    }
-
-    .result-card {
-      padding: 10px 10px 9px;
-      border-radius: var(--radius-md);
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-      gap: 10px;
-      align-items: center;
-    }
-
-    @media (max-width: 640px) {
-      .result-card {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .result-info {
-      font-size: 13px;
-    }
-
-    .result-info-title {
-      font-size: 13px;
-      margin-bottom: 4px;
-    }
-
-    .result-meta {
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-
-    .download-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 7px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(79, 70, 229, 0.7);
-      background: var(--accent-soft);
-      color: #e5e7eb;
-      font-size: 11px;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .download-link small {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      opacity: 0.8;
-    }
-
-    video {
-      width: 100%;
-      border-radius: 12px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: black;
-    }
-
-    /* Right side: info + fake ad area */
-    .side {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .ad-slot {
-      border-radius: var(--radius-lg);
-      border: 1px dashed rgba(148, 163, 184, 0.5);
-      background: radial-gradient(circle at top left, rgba(129, 140, 248, 0.15), transparent),
-        rgba(15, 23, 42, 0.9);
-      padding: 10px;
-      text-align: center;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .ad-slot-title {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 4px;
-      color: #e5e7eb;
-    }
-
-    .steps {
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    .steps ol {
-      padding-left: 18px;
-      margin-top: 3px;
-    }
-
-    .steps li {
-      margin-bottom: 3px;
-    }
-
-    footer {
-      margin-top: 12px;
-      font-size: 10px;
-      color: #6b7280;
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    footer a {
-      color: #a5b4fc;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    .legal {
-      max-width: 580px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="app">
-    <header>
-      <div class="logo">
-        <div class="logo-icon">Y</div>
-        <div class="logo-text">
-          <h1>Y2Mete</h1>
-          <span>Minimal, safe video downloader for direct URLs</span>
-        </div>
-      </div>
-      <div class="badge">
-        <div class="badge-dot"></div>
-        <span>Free · No login · Frontend only</span>
-      </div>
+  <div class="page">
+    <header class="top-bar">
+      <div class="logo">Y2<span>Mete</span></div>
+      <nav class="nav">
+        <a href="#how">How it works</a>
+        <a href="#legal">Legal use</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </header>
 
-    <main>
-      <!-- LEFT: Downloader -->
-      <section class="card">
-        <div class="card-title">
-          Paste video link to download
-        </div>
-        <div class="card-subtitle">
-          Works with <b>direct video file links</b> (e.g. .mp4, .webm) that you have permission to download.
-        </div>
+    <main class="main">
+      <section class="tool-card">
+        <h1>Y2Mete – Smart Video Tools</h1>
+        <p class="subtitle">
+          Paste a <strong>direct video file link</strong> (.mp4 / .webm) that you own or
+          have permission to use. This tool does <strong>not</strong> support YouTube,
+          Facebook, TikTok or any streaming sites.
+        </p>
 
         <div class="pill-row">
-          <div class="pill primary">No server · Static site</div>
-          <div class="pill">Direct .mp4 / .webm links</div>
-          <div class="pill">For personal & own content</div>
+          <span class="pill active">Static site · No server</span>
+          <span class="pill">Direct .mp4 / .webm</span>
+          <span class="pill">For personal &amp; own content only</span>
         </div>
 
+        <label class="field-label" for="video-url">Video URL</label>
         <div class="input-row">
-          <div>
-            <label for="videoUrl">Video URL</label>
-            <div class="url-input-wrapper">
-              <input
-                id="videoUrl"
-                class="url-input"
-                type="url"
-                placeholder="https://example.com/video.mp4"
-                autocomplete="off"
-              />
-              <button class="paste-btn" type="button" id="pasteBtn">Paste</button>
-            </div>
-            <p class="hint">
-              Example: <b>https://mydomain.com/videos/my-travel-vlog.mp4</b>.  
-              This tool is not for bypassing protections of YouTube, Facebook, or other platforms.
-            </p>
-          </div>
+          <input
+            id="video-url"
+            type="url"
+            placeholder="https://example.com/video.mp4"
+            autocomplete="off"
+          />
+          <button id="paste-btn" type="button">Paste</button>
+        </div>
+        <p class="hint">
+          Example: https://yourdomain.com/videos/my-travel-vlog.mp4  
+          This page only works with direct file URLs you are allowed to use.
+        </p>
 
-          <div class="row-2">
-            <select id="formatSelect">
-              <option value="mp4">MP4 (video)</option>
-              <option value="webm">WEBM (video)</option>
-              <option value="audio">Audio only (manual)</option>
-            </select>
+        <div class="select-row">
+          <select id="format-select">
+            <option value="mp4">MP4 (video)</option>
+            <option value="webm">WEBM (video)</option>
+          </select>
+          <button id="generate-btn" type="button">Generate Download Link</button>
+        </div>
 
-            <button class="download-btn" id="downloadBtn">
-              <span class="icon">⬇️</span>
-              <span>Generate Download Link</span>
-            </button>
-          </div>
+        <p id="status" class="status"></p>
 
-          <div id="status" class="status"></div>
-
-          <div id="results" class="results">
-            <div class="result-card">
-              <div class="result-info">
-                <div class="result-info-title" id="resultTitle"></div>
-                <div class="result-meta" id="resultMeta"></div>
-                <a id="downloadLink" class="download-link" href="#" download>
-                  <span>⬇</span>
-                  <span>Download now</span>
-                  <small>via browser</small>
-                </a>
-              </div>
-              <div>
-                <video id="preview" controls></video>
-              </div>
-            </div>
-          </div>
+        <div id="result" class="result hidden">
+          <h2>Preview &amp; Download</h2>
+          <video id="preview" controls playsinline></video>
+          <a id="download-link" class="download-btn" download>Download now</a>
         </div>
       </section>
 
-      <!-- RIGHT: Info + ad placeholder -->
-      <aside class="side">
-        <div class="card">
-          <div class="card-title">How Y2Mete works</div>
-          <div class="card-subtitle">
-            Client-side only · No video files are stored on our servers.
-          </div>
-          <div class="steps">
-            <ol>
-              <li>Host or get a direct video file URL that you own / can use.</li>
-              <li>Paste it into the box and click <b>Generate Download Link</b>.</li>
-              <li>Preview the video, then tap <b>Download now</b>.</li>
-            </ol>
-            <p style="margin-top:6px;">
-              For platforms like YouTube, Facebook, or TikTok, make sure you obey their Terms of Service
-              and local copyright law. This demo is for <b>personal and legal use only</b>.
-            </p>
-          </div>
-        </div>
+      <aside class="sidebar">
+        <section class="info-card" id="how">
+          <h2>How Y2Mete works</h2>
+          <ol>
+            <li>Host or get a direct video file URL (.mp4 / .webm).</li>
+            <li>Paste it into the box and tap <strong>Generate Download Link</strong>.</li>
+            <li>Preview the clip below and use <strong>Download now</strong>.</li>
+          </ol>
+          <p class="small">
+            All processing happens in your browser. No files are uploaded to our servers.
+          </p>
+        </section>
 
-        <div class="ad-slot">
-          <div class="ad-slot-title">Your Ad Space</div>
-          Place your ad network script here (Adsterra / Propeller / VPN affiliate banner).
-        </div>
+        <section class="info-card ad-card">
+          <h2>Your ad space</h2>
+          <p class="small">
+            Paste your Adsterra / PropellerAds / VPN affiliate script here.
+          </p>
+          <!-- Example placeholder for ad script -->
+          <!-- Put your ad network script in this DIV -->
+          <div id="ad-slot-1" class="ad-slot">
+            ADS HERE
+          </div>
+        </section>
+
+        <section class="info-card" id="legal">
+          <h2>Legal use only</h2>
+          <p class="small">
+            Y2Mete is a demo tool for personal and educational use. Only use it with
+            content you created yourself or have written permission to download.
+            It is <strong>not</strong> for bypassing protections of YouTube,
+            Facebook, TikTok, or any streaming platform.
+          </p>
+        </section>
+
       </aside>
     </main>
 
-    <footer>
-      <div class="legal">
-        © <span id="year"></span> Y2Mete · Designed as a simple, legal demo.  
-        Please only download content that you created or have been given explicit permission to use.
-      </div>
-      <div>
-        <a href="#">Privacy</a> · <a href="#">Terms</a>
-      </div>
+    <footer class="footer" id="contact">
+      <p>© 2025 Y2Mete · Made by SWP · All rights reserved.</p>
     </footer>
   </div>
 
-  <script>
-    const videoUrlInput = document.getElementById("videoUrl");
-    const pasteBtn = document.getElementById("pasteBtn");
-    const downloadBtn = document.getElementById("downloadBtn");
-    const formatSelect = document.getElementById("formatSelect");
-    const statusEl = document.getElementById("status");
-    const resultsEl = document.getElementById("results");
-    const resultTitleEl = document.getElementById("resultTitle");
-    const resultMetaEl = document.getElementById("resultMeta");
-    const downloadLinkEl = document.getElementById("downloadLink");
-    const previewEl = document.getElementById("preview");
-
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    pasteBtn.addEventListener("click", async () => {
-      if (!navigator.clipboard) {
-        status("Clipboard not available in this browser.", "error");
-        return;
-      }
-      try {
-        const text = await navigator.clipboard.readText();
-        videoUrlInput.value = text.trim();
-        status("Pasted from clipboard. Now click Generate Download Link.", "ok");
-      } catch (e) {
-        status("Unable to read from clipboard. Paste manually (Ctrl+V).", "error");
-      }
-    });
-
-    function status(message, type = "") {
-      statusEl.textContent = message;
-      statusEl.className = "status" + (type ? " " + type : "");
-    }
-
-    function isLikelyDirectVideo(url) {
-      return /\.(mp4|webm|ogg|mov|m4v)(\?|#|$)/i.test(url);
-    }
-
-    downloadBtn.addEventListener("click", () => {
-      const url = videoUrlInput.value.trim();
-      if (!url) {
-        status("Please paste a video URL first.", "error");
-        resultsEl.style.display = "none";
-        return;
-      }
-
-      try {
-        new URL(url);
-      } catch {
-        status("That doesn't look like a valid URL.", "error");
-        resultsEl.style.display = "none";
-        return;
-      }
-
-      const format = formatSelect.value;
-
-      if (format !== "audio" && !isLikelyDirectVideo(url)) {
-        status(
-          "This looks like a page URL, not a direct video link. This demo only supports direct .mp4 / .webm / etc.",
-          "error"
-        );
-        resultsEl.style.display = "none";
-        return;
-      }
-
-      status("Download link generated. If the file is accessible, your browser will handle the download.", "ok");
-
-      const shortName = url.split("/").pop().split("?")[0] || "video";
-      let fileName = shortName;
-
-      if (format === "audio") {
-        // Just a hint: user will have to extract audio elsewhere.
-        fileName = (shortName || "audio") + ".mp3";
-        resultMetaEl.textContent =
-          "Audio mode selected. This link still downloads the original file. Convert to MP3 using your own software.";
-      } else {
-        resultMetaEl.textContent = "Direct browser download. If the server allows it, the video will start downloading.";
-      }
-
-      resultTitleEl.textContent = "Ready: " + fileName;
-      downloadLinkEl.href = url;
-      downloadLinkEl.download = fileName;
-
-      if (format === "audio") {
-        previewEl.style.display = "none";
-      } else {
-        previewEl.style.display = "block";
-        previewEl.src = url;
-      }
-
-      resultsEl.style.display = "block";
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
