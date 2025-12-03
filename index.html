@@ -4,23 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- SEO Title -->
-  <title>Y2Mete • Pro Video Tools & YouTube Helper</title>
+  <title>Y2Mete • Debug Test</title>
 
-  <!-- Basic SEO -->
-  <meta name="description" content="Y2Mete is a free, legal video toolbox for creators. Preview MP4/WebM videos from your device or direct links, and use YouTube helper tools without downloading from protected platforms." />
-  <meta name="keywords" content="video tools, youtube tools, creator tools, video preview, mp4 viewer, webm viewer, content editing helper, thumbnail tools" />
-  <meta name="author" content="Y2Mete" />
-  <meta name="robots" content="index, follow" />
+  <!-- Basic SEO just to keep things okay -->
+  <meta name="description" content="Debug test page for Y2Mete" />
+  <meta name="robots" content="noindex, nofollow" />
 
-  <!-- Canonical -->
-  <link rel="canonical" href="https://yt-swp.github.io/y2mete/" />
-
-  <!-- Google Search Console verification -->
-  <!-- TODO: replace PASTE_GOOGLE_CODE_HERE with real code (optional now) -->
-  <meta name="google-site-verification" content="PASTE_GOOGLE_CODE_HERE" />
-
-  <!-- Google Analytics (GA4) -->
+  <!-- Google Analytics (GA4) (optional in debug, but fine to keep) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-EC08WM7WF6"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -28,156 +18,24 @@
     gtag('js', new Date());
     gtag('config', 'G-EC08WM7WF6');
   </script>
-  <!-- END GA4 -->
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Y2Mete — Free Video Tools for Creators" />
-  <meta property="og:description" content="Preview your content, extract thumbnails, generate tags, and prepare videos — 100% legal creator toolbox." />
-  <meta property="og:url" content="https://yt-swp.github.io/y2mete/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://yt-swp.github.io/y2mete/y2mete-favicon.ico" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Y2Mete — Content Creator Tool" />
-  <meta name="twitter:description" content="Free browser-based video preview + YouTube helper tools (no downloading)." />
-  <meta name="twitter:image" content="https://yt-swp.github.io/y2mete/y2mete-favicon.ico" />
-
-  <!-- Style & Favicon -->
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/x-icon" href="y2mete-favicon.ico" />
+  <!-- IMPORTANT: we REMOVE style.css on purpose for this test -->
+  <!-- <link rel="stylesheet" href="style.css" /> -->
 </head>
 
 <body>
-  <div class="page">
-    
-    <header class="top-bar">
-      <div class="logo">Y2<span>Mete</span></div>
-      <nav class="nav">
-        <a href="#how">How it works</a>
-        <a href="#tools">Tools</a>
-        <a href="youtube-tools.html">YT Tools</a>
-        <a href="#legal">Legal use</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
+  <!-- BIG DEBUG TEXT -->
+  <h1 style="font-size: 32px; color: red; text-align: center; margin-top: 40px;">
+    Y2Mete DEBUG PAGE
+  </h1>
 
-    <main class="main">
+  <p style="font-size: 20px; text-align: center;">
+    If you can see this text, HTML is working.<br/>
+    The problem is somewhere in <strong>style.css</strong> or old cache.
+  </p>
 
-      <section class="tool-card">
-        <h1>Y2Mete – Pro Video Tools for Creators</h1>
-        <p class="subtitle">
-          Preview your own <strong>MP4 / WEBM</strong> files from device or link.<br>
-          Works only with content you own — no streaming downloads.
-        </p>
-
-        <div class="pill-row">
-          <span class="pill active">Creator toolbox</span>
-          <span class="pill">Runs in browser</span>
-          <span class="pill">No login</span>
-        </div>
-
-        <p class="field-label">1. Choose your video source</p>
-        
-        <div class="input-row" style="margin-bottom: 10px;">
-          <input
-            type="text"
-            value="Open video from device"
-            disabled
-            style="max-width: 260px;opacity: .8;"
-          />
-          <input id="file-input" type="file" accept="video/mp4,video/webm" />
-        </div>
-
-        <label class="field-label" for="video-url">2. Paste a direct video URL (.mp4 / .webm)</label>
-        <div class="input-row">
-          <input
-            id="video-url"
-            type="url"
-            placeholder="https://example.com/video.mp4"
-            autocomplete="off"
-          />
-          <button id="paste-btn" type="button">Paste</button>
-        </div>
-
-        <p class="hint">Works ONLY with direct .mp4 or .webm URLs.</p>
-
-        <div class="select-row">
-          <select id="format-select">
-            <option value="auto">Auto detect</option>
-            <option value="mp4">MP4</option>
-            <option value="webm">WEBM</option>
-          </select>
-          <button id="generate-btn" type="button">Open video</button>
-        </div>
-
-        <p id="status" class="status"></p>
-
-        <div id="result" class="result hidden">
-          <h2>Preview</h2>
-          <video id="preview" controls playsinline></video>
-          <a id="download-link" class="download-btn" download>Save a copy</a>
-          <p class="hint">Great for testing format, aspect ratio &amp; quality.</p>
-        </div>
-      </section>
-
-      <aside class="sidebar">
-        <section class="info-card" id="how">
-          <h2>How it works</h2>
-          <ol>
-            <li>Select file or paste URL</li>
-            <li>Click <strong>Open video</strong></li>
-            <li>Preview &amp; optionally save</li>
-          </ol>
-        </section>
-
-        <section class="info-card" id="tools">
-          <h2>Future tools</h2>
-          <ul>
-            <li>Trim tool</li>
-            <li>Audio remove/replace</li>
-            <li>Thumbnail capture</li>
-            <li>9:16 auto crop</li>
-          </ul>
-        </section>
-
-        <section class="info-card ad-card">
-          <h2>Ad space</h2>
-          <div class="ad-slot">ADS HERE</div>
-        </section>
-
-        <section class="info-card" id="legal">
-          <h2>Legal use</h2>
-          <p>Use only with content you own or have permission to use.</p>
-        </section>
-      </aside>
-
-    </main>
-
-    <footer class="footer" id="contact">
-      <p>© 2025 Y2Mete · All rights reserved.</p>
-    </footer>
-  </div>
-
-  <script src="script.js"></script>
-
-  <!-- Schema.org structured data (Google Rich Results) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Y2Mete",
-    "url": "https://yt-swp.github.io/y2mete/",
-    "description": "A free, legal video toolbox for creators: preview MP4/WebM files from device or direct URLs, plus helper tools for YouTube content planning without downloading from protected platforms.",
-    "applicationCategory": "Multimedia",
-    "operatingSystem": "All",
-    "inLanguage": "en",
-    "creator": {
-      "@type": "Person",
-      "name": "SWP"
-    }
-  }
-  </script>
-
+  <p style="text-align:center; margin-top:20px;">
+    <a href="youtube-tools.html">Go to YouTube Tools page</a>
+  </p>
 </body>
 </html>
