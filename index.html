@@ -3,15 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Y2Mete – Pro Video Tools for Creators</title>
 
-  <meta name="description" content="Y2Mete is a simple, legal video toolbox for creators. Open and preview your own MP4/WebM videos from device or direct links. No YouTube / Facebook / TikTok downloading." />
+  <!-- SEO title -->
+  <title>Y2Mete • Pro Video Tools & YouTube Helper</title>
 
+  <!-- Basic SEO meta -->
+  <meta name="description" content="Y2Mete is a free, legal video toolbox for creators. Preview MP4/WebM videos from your device or direct links, and use YouTube helper tools without downloading from protected platforms." />
+  <meta name="keywords" content="Y2Mete, video tools, youtube tools, video preview, mp4 viewer, webm viewer, creator tools, thumbnail helper, hashtag generator" />
+  <meta name="author" content="Y2Mete" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://yt-swp.github.io/y2mete/" />
+
+  <!-- Open Graph (for Facebook, WhatsApp, etc.) -->
+  <meta property="og:title" content="Y2Mete — Free Video Tools for Creators" />
+  <meta property="og:description" content="Preview your own videos, generate ideas and prepare content with Y2Mete’s legal creator toolbox. No YouTube/Facebook/TikTok downloading." />
+  <meta property="og:url" content="https://yt-swp.github.io/y2mete/" />
+  <meta property="og:type" content="website" />
+  <!-- When you add a logo/preview image, update this path -->
+  <meta property="og:image" content="https://yt-swp.github.io/y2mete/y2mete-favicon.ico" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Y2Mete — Creator Video Tools" />
+  <meta name="twitter:description" content="Simple, legal video tools: preview MP4/WebM files and use YouTube helper utilities without downloading from protected platforms." />
+  <meta name="twitter:image" content="https://yt-swp.github.io/y2mete/y2mete-favicon.ico" />
+
+  <!-- Styles & favicon (upload favicon file as y2mete-favicon.ico) -->
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/x-icon" href="y2mete-favicon.ico" />
 </head>
 <body>
   <div class="page">
     <header class="top-bar">
+      <!-- If later you add a logo image, replace this div with an <img> tag -->
       <div class="logo">Y2<span>Mete</span></div>
       <nav class="nav">
         <a href="#how">How it works</a>
@@ -43,15 +69,24 @@
 
         <!-- FROM DEVICE -->
         <div class="input-row" style="margin-bottom: 10px;">
-          <input type="text" value="Open video from this device" disabled style="max-width: 260px; opacity: .8; cursor: default;" />
+          <input
+            type="text"
+            value="Open video from this device"
+            disabled
+            style="max-width: 260px; opacity: .8; cursor: default;"
+          />
           <input id="file-input" type="file" accept="video/mp4,video/webm" />
         </div>
 
         <!-- FROM URL -->
         <label class="field-label" for="video-url">2. Or paste a direct video file link (.mp4 / .webm)</label>
         <div class="input-row">
-          <input id="video-url" type="url" placeholder="https://example.com/video.mp4"
-            autocomplete="off" />
+          <input
+            id="video-url"
+            type="url"
+            placeholder="https://example.com/video.mp4"
+            autocomplete="off"
+          />
           <button id="paste-btn" type="button">Paste</button>
         </div>
         <p class="hint">
@@ -99,7 +134,7 @@
           <h2>Creator tools (roadmap)</h2>
           <p class="small">Upcoming:</p>
           <ul class="small" style="margin-top: 4px; padding-left: 18px;">
-            <li>Trim & cut</li>
+            <li>Trim &amp; cut</li>
             <li>Remove / replace audio</li>
             <li>Auto thumbnails</li>
             <li>Vertical 9:16 preview</li>
@@ -128,5 +163,22 @@
   </div>
 
   <script src="script.js"></script>
+
+  <!-- Schema.org structured data for better SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Y2Mete",
+    "url": "https://yt-swp.github.io/y2mete/",
+    "description": "A free, legal video toolbox for creators: preview MP4/WebM files and use YouTube helper utilities without downloading from protected platforms.",
+    "applicationCategory": "Multimedia",
+    "operatingSystem": "All",
+    "creator": {
+      "@type": "Person",
+      "name": "SWP"
+    }
+  }
+  </script>
 </body>
 </html>
