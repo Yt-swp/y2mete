@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Y2Mete – Smart Video Tools</title>
+  <title>Y2Mete – Pro Video Tools for Creators</title>
 
-  <meta name="description" content="Y2Mete is a simple, legal video tool for previewing and downloading your own MP4/WebM video files from direct links. No YouTube / Facebook / TikTok support." />
+  <meta name="description" content="Y2Mete is a simple, legal video toolbox for creators. Open and preview your own MP4/WebM videos from device or direct links. No YouTube / Facebook / TikTok downloading." />
 
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -15,27 +15,44 @@
       <div class="logo">Y2<span>Mete</span></div>
       <nav class="nav">
         <a href="#how">How it works</a>
+        <a href="#tools">Tools</a>
         <a href="#legal">Legal use</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
 
     <main class="main">
+      <!-- MAIN TOOL CARD -->
       <section class="tool-card">
-        <h1>Y2Mete – Smart Video Tools</h1>
+        <h1>Y2Mete – Pro Video Tools for Creators</h1>
         <p class="subtitle">
-          Paste a <strong>direct video file link</strong> (.mp4 / .webm) that you own or
-          have permission to use. This tool does <strong>not</strong> support YouTube,
-          Facebook, TikTok or any streaming sites.
+          Open and preview your own <strong>MP4 / WEBM</strong> videos from your device
+          or a direct file link. This page is for <strong>your content only</strong> –
+          it does not download from YouTube, Facebook, TikTok or any streaming sites.
         </p>
 
         <div class="pill-row">
-          <span class="pill active">Static site · No server</span>
-          <span class="pill">Direct .mp4 / .webm</span>
-          <span class="pill">For personal &amp; own content only</span>
+          <span class="pill active">Creator toolbox</span>
+          <span class="pill">Works in your browser</span>
+          <span class="pill">No login · No server</span>
         </div>
 
-        <label class="field-label" for="video-url">Video URL</label>
+        <!-- TOOL TABS INFO -->
+        <p id="tools" class="field-label">1. Choose your video source</p>
+
+        <!-- FROM DEVICE -->
+        <div class="input-row" style="margin-bottom: 10px;">
+          <input
+            type="text"
+            value="Open video from this device"
+            disabled
+            style="max-width: 260px; opacity: .8; cursor: default;"
+          />
+          <input id="file-input" type="file" accept="video/mp4,video/webm" />
+        </div>
+
+        <!-- FROM URL -->
+        <label class="field-label" for="video-url">2. Or paste a direct video file link (.mp4 / .webm)</label>
         <div class="input-row">
           <input
             id="video-url"
@@ -47,46 +64,69 @@
         </div>
         <p class="hint">
           Example: https://yourdomain.com/videos/my-travel-vlog.mp4  
-          This page only works with direct file URLs you are allowed to use.
+          This works only with direct file URLs or files you selected above.
         </p>
 
         <div class="select-row">
           <select id="format-select">
+            <option value="auto">Auto detect format</option>
             <option value="mp4">MP4 (video)</option>
             <option value="webm">WEBM (video)</option>
           </select>
-          <button id="generate-btn" type="button">Generate Download Link</button>
+          <button id="generate-btn" type="button">Open video</button>
         </div>
 
         <p id="status" class="status"></p>
 
+        <!-- RESULT AREA -->
         <div id="result" class="result hidden">
-          <h2>Preview &amp; Download</h2>
+          <h2>Preview &amp; Save</h2>
           <video id="preview" controls playsinline></video>
-          <a id="download-link" class="download-btn" download>Download now</a>
+          <a id="download-link" class="download-btn" download>Save a copy</a>
+          <p class="hint">
+            Tip: use this preview while editing, planning clips, or checking aspect ratio
+            before uploading to YouTube, Reels or Shorts.
+          </p>
         </div>
       </section>
 
+      <!-- SIDEBAR -->
       <aside class="sidebar">
         <section class="info-card" id="how">
           <h2>How Y2Mete works</h2>
           <ol>
-            <li>Host or get a direct video file URL (.mp4 / .webm).</li>
-            <li>Paste it into the box and tap <strong>Generate Download Link</strong>.</li>
-            <li>Preview the clip below and use <strong>Download now</strong>.</li>
+            <li>Select a video from your device or paste a direct .mp4 / .webm link.</li>
+            <li>Click <strong>Open video</strong> to load it into the player.</li>
+            <li>Preview the clip and, if you want, click <strong>Save a copy</strong>.</li>
           </ol>
           <p class="small">
-            All processing happens in your browser. No files are uploaded to our servers.
+            Everything runs inside your browser. We don't store or upload your files.
+          </p>
+        </section>
+
+        <section class="info-card" id="tools">
+          <h2>Creator tools (roadmap)</h2>
+          <p class="small">
+            Upcoming browser-based tools for your own videos:
+          </p>
+          <ul class="small" style="margin-top: 4px; padding-left: 18px;">
+            <li>Quick trim &amp; cut (client side)</li>
+            <li>Mute / replace audio track</li>
+            <li>Convert to vertical (9:16) preview</li>
+            <li>Thumbnail snapshot from any frame</li>
+          </ul>
+          <p class="small" style="margin-top: 6px;">
+            For now this page focuses on fast preview &amp; save – perfect as a “pre-upload
+            check” for creators.
           </p>
         </section>
 
         <section class="info-card ad-card">
           <h2>Your ad space</h2>
           <p class="small">
-            Paste your Adsterra / PropellerAds / VPN affiliate script here.
+            Add your Adsterra / PropellerAds / VPN affiliate banner code here to start
+            monetizing creator traffic.
           </p>
-          <!-- Example placeholder for ad script -->
-          <!-- Put your ad network script in this DIV -->
           <div id="ad-slot-1" class="ad-slot">
             ADS HERE
           </div>
@@ -95,13 +135,12 @@
         <section class="info-card" id="legal">
           <h2>Legal use only</h2>
           <p class="small">
-            Y2Mete is a demo tool for personal and educational use. Only use it with
-            content you created yourself or have written permission to download.
-            It is <strong>not</strong> for bypassing protections of YouTube,
-            Facebook, TikTok, or any streaming platform.
+            Y2Mete is a demo toolbox for personal and educational use. Use it only with
+            videos you created yourself or have permission to process. It is
+            <strong>not</strong> designed to bypass protections or download from streaming
+            platforms like YouTube, Facebook or TikTok.
           </p>
         </section>
-
       </aside>
     </main>
 
